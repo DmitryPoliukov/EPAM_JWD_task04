@@ -24,7 +24,7 @@ public class AirlineService {
 
 
     public void initAircraft(Airline airline) throws UnsupportedCategoryException, FileNotFoundException {
-        File file = new File(".\\resources\\aircrafts.txt");
+        File file = new File(".\\resources\\aircraftsForReading.txt");
         Scanner scanner = new Scanner(file);
         while(scanner.hasNextLine()) {
             String line = scanner.nextLine();

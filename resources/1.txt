@@ -1,0 +1,13 @@
+cargo airplane, Airbus A300-600ST, 2779, 750, 100000000, 47,  1210
+passenger airplane, Tu-154M, 3900, 900, 5400, 18, 180
+cargo airplane, An-22 Antey, 5225, 560, 100000, 80, 511
+passenger airplane, Boeing-747-200, 12100, 917, 100000, 67.36, 425
+cargo airplane, Antonov AN-124-100M, 4800, 800, 100000, 120, 1050
+passenger airplane, Boeing-777-300, 10595, 945, 1000000, 66.05, 550
+cargo airplane, Boeing 747-400ERF, 7585, 908, 1000000, 112.76, 735
+passenger airplane, Airbus A320-200, 3717, 853, 100000, 16.6, 149
+passenger airplane, Airbus A330-300, 8980, 937, 100000, 51.7, 398
+helicopter, Mi - 8, 950, 250, 100000, 4, 24
+helicopter, Sikorsky S-70С/UH-60, 584, 282, 1000000, 1.197, 11
+helicopter, Robinson R 44, 650, 210, 57, 0.38, 3
+helicopter, Eurocopter EC 135, 620, 239, 10000, 0, 6

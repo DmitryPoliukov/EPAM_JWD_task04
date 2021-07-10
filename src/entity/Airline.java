@@ -4,6 +4,7 @@ import entity.airoplain.cargo.CargoAirplane;
 import entity.airoplain.passenger.PassengerAirplane;
 import entity.helicopter.Helicopter;
 import exception.InvalidIndexException;
+import validator.Validator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,8 +12,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Airline implements Serializable {
+    Validator validator = new Validator();
     private static final long serialVersionUID = 1L;
-
+// изменить на private, когда будет готов вывод в файл
     public List<PassengerAirplane> passengerAirplanes = new ArrayList<>() ;
     public List<CargoAirplane> cargoAirplanes = new ArrayList<>();
     public List<Helicopter> helicopters = new ArrayList<>();
@@ -38,7 +40,7 @@ public class Airline implements Serializable {
     }
 
     public boolean addPassengerAirplane(PassengerAirplane passengerAirplane) {
-        if(isNull(passengerAirplane)) {
+        if(validator.isNull(passengerAirplane)) {
             return false;
         }
         return passengerAirplanes.add(passengerAirplane);
@@ -46,21 +48,21 @@ public class Airline implements Serializable {
 
 
     public boolean addCargoAirplane(CargoAirplane cargoAirplane) {
-        if(isNull(cargoAirplane)) {
+        if(validator.isNull(cargoAirplane)) {
             return false;
         }
         return cargoAirplanes.add(cargoAirplane);
     }
 
     public boolean addHelicopter(Helicopter helicopter) {
-        if(isNull(helicopter)) {
+        if(validator.isNull(helicopter)) {
             return false;
         }
         return helicopters.add(helicopter);
     }
 
     public boolean removePassengerAirplane(PassengerAirplane passengerAirplane) {
-        if(isNull(passengerAirplane)) {
+        if(validator.isNull(passengerAirplane)) {
             return false;
         }
         return passengerAirplanes.remove(passengerAirplane);
@@ -68,7 +70,7 @@ public class Airline implements Serializable {
 
 
     public boolean removeCargoAirplane(CargoAirplane cargoAirplane) {
-        if(isNull(cargoAirplane)) {
+        if(validator.isNull(cargoAirplane)) {
             return false;
         }
         return cargoAirplanes.remove(cargoAirplane);
@@ -86,7 +88,7 @@ public class Airline implements Serializable {
     public Iterator<Aircraft> allAircraftIterator() {
         return allAircrafts.iterator();
     }
-    public Iterator<Aircraft> passengerAircrafts () {
+    public Iterator<Aircraft> passengerAircraftsIterator() {
         return passengerAircrafts.iterator();
     }
 
@@ -98,46 +100,81 @@ public class Airline implements Serializable {
     }
 
     public Aircraft get(int index) throws InvalidIndexException {
-        if(!isPositiveInt(index) || index >= allAircrafts.size()) {
+        if(validator.isNegative(index) || index >= allAircrafts.size()) {
             throw new InvalidIndexException("Invalid index");
         }
         return allAircrafts.get(index);
     }
     public Aircraft getPassengerAircraft(int index) throws InvalidIndexException {
-        if(!isPositiveInt(index) || index >= passengerAircrafts.size()) {
+        if(validator.isNegative(index) || index >= passengerAircrafts.size()) {
             throw new InvalidIndexException("Invalid index");
         }
         return passengerAircrafts.get(index);
     }
 
     public boolean set(int index, Aircraft aircraft) {
-        if(isNull(aircraft)) {
+        if(validator.isNull(aircraft)) {
             return false;
         }
-        if(!isPositiveInt(index) || index >= allAircrafts.size()) {
+        if(validator.isNegative(index) || index >= allAircrafts.size()) {
             return false;
         }
         allAircrafts.set(index, aircraft);
         return true;
     }
     public boolean setPassengerAircraft(int index, Aircraft aircraft) {
-        if(isNull(aircraft)) {
+        if(validator.isNull(aircraft)) {
             return false;
         }
-        if(!isPositiveInt(index) || index >= passengerAircrafts.size()) {
+        if(validator.isNegative(index) || index >= passengerAircrafts.size()) {
             return false;
         }
         passengerAircrafts.set(index, aircraft);
         return true;
     }
 
-    private boolean isNull(Aircraft aircraft) {
-        return aircraft == null;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Airline airline = (Airline) o;
+        if(cargoAirplanes == null) {
+            if (airline.cargoAirplanes != null) {
+                return false;
+            }
+        } else if(!cargoAirplanes.equals(airline.cargoAirplanes)) {
+            return false;
+        }
+        if(helicopters == null) {
+            if (airline.helicopters != null) {
+                return false;
+            }
+        } else if(!helicopters.equals(airline.helicopters)) {
+            return false;
+        }
+        if(passengerAirplanes == null) {
+            return airline.passengerAirplanes == null;
+        } else if(!passengerAirplanes.equals(airline.passengerAirplanes)) {
+            return false;
+        }
+        return true;
     }
-    private boolean isPositiveInt(int number) {
-        return number > 0;
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (cargoAirplanes == null? 0 : cargoAirplanes.hashCode());
+        result = prime * result + (helicopters == null? 0 : helicopters.hashCode());
+        result = prime * result + (passengerAirplanes == null? 0 : passengerAirplanes.hashCode());
+
+        return result;
     }
 
-
-
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[" +
+                "allAircrafts=" + allAircrafts +
+                ']';
+    }
 }

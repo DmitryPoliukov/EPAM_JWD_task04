@@ -1,12 +1,26 @@
 package entity.helicopter;
 
 import entity.Aircraft;
+import validator.Validator;
 
-public class Helicopter extends Aircraft {
+import java.io.Serializable;
+
+
+public class Helicopter extends Aircraft implements Serializable {
+    Validator validator = new Validator();
+    private static final long serialVersionUID = 1L;
     private int amountPassengers;
 
     public int getAmountPassengers() {
         return amountPassengers;
+    }
+
+    public boolean setAmountPassengers(int amountPassengers) {
+        if(validator.isNegative(amountPassengers)) {
+            return false;
+        }
+        this.amountPassengers = amountPassengers;
+        return true;
     }
 
     public Helicopter(String category, String name, double maximumFlightRange, double cruisingSpeed,
@@ -15,10 +29,30 @@ public class Helicopter extends Aircraft {
         this.amountPassengers = amountPassengers;
     }
 
+    public Helicopter() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Helicopter that = (Helicopter) o;
+        return amountPassengers == that.amountPassengers ;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + Integer.hashCode(amountPassengers);
+        return result;
+    }
+
     @Override
     public String toString() {
         return super.toString() +
-                ", amountPassengers=" + amountPassengers +
+                ", amountPassengers= " + amountPassengers +
                 '}' + System.lineSeparator();
     }
 }

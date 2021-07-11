@@ -1,16 +1,10 @@
-package inputdata;
+package reader;
 
-import entity.Airline;
 import entity.Aircraft;
 import entity.airoplain.cargo.CargoAirplane;
 import entity.airoplain.passenger.PassengerAirplane;
 import entity.helicopter.Helicopter;
 import exception.UnsupportedCategoryException;
-import validator.Validator;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class InputData {
 

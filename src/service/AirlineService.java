@@ -8,7 +8,7 @@ import entity.helicopter.Helicopter;
 import exception.IllegalFuelConsumptionException;
 import exception.InvalidIndexException;
 import exception.UnsupportedCategoryException;
-import inputdata.InputData;
+import reader.InputData;
 import validator.Validator;
 
 import java.io.File;
@@ -57,7 +57,7 @@ public class AirlineService {
            low = high;
            high = temp;
         }
-        Iterator<Aircraft> allAircraft = airline.allAircraftIterator();
+        Iterator<Aircraft> allAircraft = airline.allAircraftsIterator();
         for (Iterator<Aircraft> it = allAircraft; it.hasNext(); ) {
             Aircraft aircraft = it.next();
             double fuelConsumption = aircraft.getFuelConsumption();
@@ -69,7 +69,7 @@ public class AirlineService {
     }
 
     public double calculateLiftingCapacity(Airline airline) {
-        Iterator<Aircraft> iterator = airline.allAircraftIterator();
+        Iterator<Aircraft> iterator = airline.allAircraftsIterator();
         double summaryCapacity = 0;
         while (iterator.hasNext()) {
             summaryCapacity += iterator.next().getLiftingCapacity();

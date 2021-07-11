@@ -14,12 +14,12 @@ import java.util.List;
 public class Airline implements Serializable {
     Validator validator = new Validator();
     private static final long serialVersionUID = 1L;
-// изменить на private, когда будет готов вывод в файл
-    public List<PassengerAirplane> passengerAirplanes = new ArrayList<>() ;
-    public List<CargoAirplane> cargoAirplanes = new ArrayList<>();
-    public List<Helicopter> helicopters = new ArrayList<>();
-    public List<Aircraft> allAircrafts = new ArrayList<>();
-    public List<Aircraft> passengerAircrafts = new ArrayList<>();
+
+    private List<PassengerAirplane> passengerAirplanes = new ArrayList<>() ;
+    private List<CargoAirplane> cargoAirplanes = new ArrayList<>();
+    private List<Helicopter> helicopters = new ArrayList<>();
+    private List<Aircraft> allAircrafts = new ArrayList<>();
+    private List<Aircraft> passengerAircrafts = new ArrayList<>();
 
     public Airline(ArrayList<Aircraft> allAircrafts) {
         this.allAircrafts = allAircrafts;
@@ -85,7 +85,7 @@ public class Airline implements Serializable {
     public Iterator<Helicopter> helicoptersIterator() {
         return helicopters.iterator();
     }
-    public Iterator<Aircraft> allAircraftIterator() {
+    public Iterator<Aircraft> allAircraftsIterator() {
         return allAircrafts.iterator();
     }
     public Iterator<Aircraft> passengerAircraftsIterator() {

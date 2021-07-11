@@ -10,4 +10,4 @@ passenger airplane, Airbus A320-200, 3717, 853, 2500, 16.6, 149
 passenger airplane, Airbus A330-300, 8980, 937, 5900, 51.7, 398
 helicopter, Mi - 8, 950, 250, 680, 4, 24
 helicopter, Sikorsky S-70С/UH-60, 584, 282, 280, 1.197, 11
-helicopter, Eurocopter EC 135, 620, 239, 209, 1.498, 6
+helicopter123d, Eurocopter EC 135, 620, 239, 209, 1.498, 6

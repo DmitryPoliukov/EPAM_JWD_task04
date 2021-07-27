@@ -1,10 +1,10 @@
-cargo airplane, Airbus A300-600ST, sdfss, 750, 5200, 47,  1210
 passenger airplane, Tu-154M, 3900, 900, 5400, 18, 180
 cargo airplane, An-22 Antey, 5225, 560, 7000, 80, 511
 passenger airplane, Boeing-747-200, 12100, 917, 14500, 67.36, 425
 cargo airplane, Antonov AN-124-100M, -4800, 800, 12600, 120, 1050
 passenger airplane, Boeing-777-300, 10595, 945, 7800, 66.05, 550
-helicopter, Robinson R 44, 650, 210, 57, 380, 3
+cargo airplane, Airbus A300-600ST, sdfss, 750, 5200, 47,  1210
+helicopter, Robinson R 44, 650, 210, 57, 0.380, 3
 cargo airplane, Boeing 747-400ERF, 7585, 908, 13500, 112.76, 735
 passenger airplane, Airbus A320-200, 3717, 853, 2500, 16.6, 149
 passenger airplane, Airbus A330-300, 8980, 937, 5900, 51.7, 398

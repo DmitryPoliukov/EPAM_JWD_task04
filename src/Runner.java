@@ -12,13 +12,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Runner {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Airline airlineTT = new Airline();
         Presentation presentation = new Presentation();
+
         AirlineService airlineService = new AirlineService();
         try {
             airlineService.initAircraft(airlineTT);
-        } catch (UnsupportedCategoryException e) {
+        } catch (UnsupportedCategoryException | FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
         airlineTT.initAllAircraft();
@@ -26,7 +27,7 @@ public class Runner {
         System.out.println("Airline contains has the following aircrafts:");
         presentation.printAllAircrafts(airlineTT);
 
-        double calculatePass = airlineService.calculateAmountPassengers(airlineTT);
+        int calculatePass = airlineService.calculateAmountPassengers(airlineTT);
         System.out.println("Total amount passengers= " + calculatePass);
         double summaryLifting = airlineService.calculateLiftingCapacity(airlineTT);
         System.out.println("Total lifting capacity= " + summaryLifting);
@@ -34,10 +35,10 @@ public class Runner {
         Comparator<Aircraft> twoStepsComparator = Comparator.comparing(Aircraft::getFuelConsumption).
                 thenComparing(Aircraft::getLiftingCapacity);
         try {
-            airlineService.sortAllAircraft(airlineTT, twoStepsComparator );
+            airlineService.sortAllAircraft(airlineTT, twoStepsComparator);
             airlineService.sortPassengerAircraft(airlineTT, new AmountPassengersComparator());
         } catch (InvalidIndexException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
         System.out.println("Sort all aircrafts by fuel consumption first and then sort by lifting capacity:");
         presentation.printAllAircrafts(airlineTT);
@@ -45,13 +46,12 @@ public class Runner {
         System.out.println("Sort passenger aircraft by amount passenger:");
         presentation.printPassengerAircrafts(airlineTT);
 
-
         try {
             System.out.println("Aircraft with fuel consumption from 0 to 100:");
             List<Aircraft> searchFuel = airlineService.searchFuelConsumptionRange(airlineTT, 0, 100);
             System.out.println(searchFuel);
         } catch (IllegalFuelConsumptionException e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
     }
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 
 public class Helicopter extends Aircraft implements Serializable {
-    Validator validator = new Validator();
+    private Validator validator = new Validator();
     private static final long serialVersionUID = 1L;
     private int amountPassengers;
 
@@ -16,7 +16,7 @@ public class Helicopter extends Aircraft implements Serializable {
     }
 
     public boolean setAmountPassengers(int amountPassengers) {
-        if(validator.isNegative(amountPassengers)) {
+        if (validator.isNegative(amountPassengers)) {
             return false;
         }
         this.amountPassengers = amountPassengers;
@@ -38,7 +38,7 @@ public class Helicopter extends Aircraft implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Helicopter that = (Helicopter) o;
-        return amountPassengers == that.amountPassengers ;
+        return amountPassengers == that.amountPassengers;
     }
 
     @Override
@@ -51,8 +51,8 @@ public class Helicopter extends Aircraft implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString() +
-                ", amountPassengers= " + amountPassengers +
-                '}' + System.lineSeparator();
+        return super.toString()
+                    + ", amountPassengers= " + amountPassengers
+                    + '}' + System.lineSeparator();
     }
 }

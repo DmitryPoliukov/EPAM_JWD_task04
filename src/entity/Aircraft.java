@@ -3,10 +3,9 @@ package entity;
 import validator.Validator;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Aircraft implements Serializable {
-    Validator validator = new Validator();
+    private Validator validator = new Validator();
     private static final long serialVersionUID = 1L;
 
     private String category;
@@ -58,7 +57,7 @@ public class Aircraft implements Serializable {
     }
 
     public boolean setCategory(String category) {
-        if(validator.isNull(category)) {
+        if (validator.isNull(category)) {
             return false;
         }
         this.category = category;
@@ -66,7 +65,7 @@ public class Aircraft implements Serializable {
     }
 
     public boolean  setName(String name) {
-        if(validator.isNull(name)) {
+        if (validator.isNull(name)) {
             return false;
         }
         this.name = name;
@@ -74,7 +73,7 @@ public class Aircraft implements Serializable {
     }
 
     public boolean setMaximumFlightRange(double maximumFlightRange) {
-        if(validator.isNegative(maximumFlightRange)) {
+        if (validator.isNegative(maximumFlightRange)) {
             return false;
         }
         this.maximumFlightRange = maximumFlightRange;
@@ -82,7 +81,7 @@ public class Aircraft implements Serializable {
     }
 
     public boolean setCruisingSpeed(double cruisingSpeed) {
-        if(validator.isNegative(cruisingSpeed)) {
+        if (validator.isNegative(cruisingSpeed)) {
             return false;
         }
         this.cruisingSpeed = cruisingSpeed;
@@ -90,7 +89,7 @@ public class Aircraft implements Serializable {
     }
 
     public boolean setFuelConsumption(double fuelConsumption) {
-        if(validator.isNegative(fuelConsumption)) {
+        if (validator.isNegative(fuelConsumption)) {
             return false;
         }
         this.fuelConsumption = fuelConsumption;
@@ -98,7 +97,7 @@ public class Aircraft implements Serializable {
     }
 
     public boolean setLiftingCapacity(double liftingCapacity) {
-        if(validator.isNegative(liftingCapacity)) {
+        if (validator.isNegative(liftingCapacity)) {
             return false;
         }
         this.liftingCapacity = liftingCapacity;
@@ -110,41 +109,38 @@ public class Aircraft implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Aircraft aircraft = (Aircraft) o;
-        if(category == null) {
-            if(aircraft.category != null) {
+        if (category == null) {
+            if (aircraft.category != null) {
                 return false;
             }
-        } else if(!category.equals(aircraft.category)){
+        } else if (!category.equals(aircraft.category)){
             return false;
         }
-        if(name == null) {
-            if(aircraft.name  != null) {
+        if (name == null) {
+            if (aircraft.name  != null) {
                 return false;
             }
-        } else if(!name .equals(aircraft.name )){
+        } else if (!name .equals(aircraft.name ) ) {
             return false;
         }
-        if(maximumFlightRange != aircraft.maximumFlightRange) {
+        if (maximumFlightRange != aircraft.maximumFlightRange) {
             return false;
         }
-        if(cruisingSpeed != aircraft.cruisingSpeed) {
+        if (cruisingSpeed != aircraft.cruisingSpeed) {
             return false;
         }
-        if(fuelConsumption != aircraft.fuelConsumption) {
+        if (fuelConsumption != aircraft.fuelConsumption) {
             return false;
         }
-        if(liftingCapacity != aircraft.liftingCapacity) {
-            return false;
-        }
-        return true;
+        return liftingCapacity == aircraft.liftingCapacity;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (name == null? 0 : name.hashCode());
-        result = prime * result + (category == null? 0 : category.hashCode());
+        result = prime * result + (name == null ? 0 : name.hashCode());
+        result = prime * result + (category == null ? 0 : category.hashCode());
         result = prime * result + Double.hashCode(maximumFlightRange);
         result = prime * result + Double.hashCode(cruisingSpeed);
         result = prime * result + Double.hashCode(fuelConsumption);
@@ -154,13 +150,13 @@ public class Aircraft implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "[" +
-                "category= '" + category + '\'' +
-                ", name= '" + name + '\'' +
-                ", maximumFlightRange= " + maximumFlightRange +
-                ", cruisingSpeed= " + cruisingSpeed +
-                ", liftingCapacity= " + liftingCapacity +
-                ", fuelConsumption= " + fuelConsumption;
+        return getClass().getSimpleName() + "["
+                + "category= '" + category + '\''
+                + ", name= '" + name + '\''
+                + ", maximumFlightRange= " + maximumFlightRange
+                + ", cruisingSpeed= " + cruisingSpeed
+                + ", liftingCapacity= " + liftingCapacity
+                + ", fuelConsumption= " + fuelConsumption;
     }
 
 }

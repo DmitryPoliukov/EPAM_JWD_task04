@@ -29,43 +29,34 @@ public class Validator {
 
     private boolean isValidAircraft(Aircraft aircraft) {
 
-        if(!isPositive(aircraft.getMaximumFlightRange())) {
+        if (!isPositive(aircraft.getMaximumFlightRange())) {
             return false;
         }
-        if(!isPositive(aircraft.getCruisingSpeed())) {
+        if (!isPositive(aircraft.getCruisingSpeed())) {
             return false;
         }
-        if(!isPositive(aircraft.getFuelConsumption())) {
+        if (!isPositive(aircraft.getFuelConsumption())) {
             return false;
         }
-        if(!isPositive(aircraft.getLiftingCapacity())) {
-            return false;
-        }
-        return true;
+        return isPositive(aircraft.getLiftingCapacity());
     }
     public boolean isValidHelicopter(Helicopter helicopter) {
-        if(isValidAircraft(helicopter)) {
-            if(!isNegative(helicopter.getAmountPassengers())) {
-                return true;
-            }
+        if (isValidAircraft(helicopter)) {
+            return !isNegative(helicopter.getAmountPassengers());
         }
         return false;
     }
 
     public boolean isValidPassengerAirplane(PassengerAirplane passengerAirplane) {
-        if(isValidAircraft(passengerAirplane)) {
-            if(isPositive(passengerAirplane.getAmountPassengers())) {
-                return true;
-            }
+        if (isValidAircraft(passengerAirplane)) {
+            return isPositive(passengerAirplane.getAmountPassengers());
         }
         return false;
     }
 
     public boolean isValidCargoAirplane(CargoAirplane cargoAirplane) {
-        if(isValidAircraft(cargoAirplane)) {
-            if(isPositive(cargoAirplane.getCargoCompartmentVolume())) {
-                return true;
-            }
+        if (isValidAircraft(cargoAirplane)) {
+            return isPositive(cargoAirplane.getCargoCompartmentVolume());
         }
         return false;
     }

@@ -6,7 +6,7 @@ import validator.Validator;
 import java.io.Serializable;
 
 public class CargoAirplane extends Aircraft implements Serializable {
-    Validator validator = new Validator();
+    private Validator validator = new Validator();
     private static final long serialVersionUID = 1L;
     private double cargoCompartmentVolume;
 
@@ -24,7 +24,7 @@ public class CargoAirplane extends Aircraft implements Serializable {
         return cargoCompartmentVolume;
     }
     public boolean setCargoCompartmentVolume(int cargoCompartmentVolume) {
-        if(validator.isNegative(cargoCompartmentVolume)) {
+        if (validator.isNegative(cargoCompartmentVolume)) {
             return false;
         }
         this.cargoCompartmentVolume = cargoCompartmentVolume;
@@ -49,8 +49,8 @@ public class CargoAirplane extends Aircraft implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString()  +
-                ", cargoCompartmentVolume= " + cargoCompartmentVolume +
-                '}' + System.lineSeparator();
+        return super.toString()
+                    + ", cargoCompartmentVolume= " + cargoCompartmentVolume
+                    + '}' + System.lineSeparator();
     }
 }

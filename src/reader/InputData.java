@@ -10,10 +10,10 @@ public class InputData {
 
     public Aircraft readAircraftParams(String line) throws UnsupportedCategoryException {
         String[] params = line.split(", ");
-    try {
         String category = params[0];
         String name = params[1];
-        double maximumFlightRange = Double.parseDouble(params[2]) ;
+    try {
+        double maximumFlightRange = Double.parseDouble(params[2]);
         double cruisingSpeed = Double.parseDouble(params[3]);
         double fuelConsumption = Double.parseDouble(params[4]);
         double liftingCapacity = Double.parseDouble(params[5]);
@@ -30,16 +30,13 @@ public class InputData {
             int amountPassengers = Integer.parseInt(params[6]);
             return new Helicopter(category, name, maximumFlightRange, cruisingSpeed,
                     fuelConsumption, liftingCapacity, amountPassengers);
-        }
-        else {
-            throw new UnsupportedCategoryException("Unsupported category of aircraft");
+        } else {
+            throw new UnsupportedCategoryException("Unsupported category of aircraft " + category);
         }
 
-    }
-    catch (NumberFormatException e) {
-
+    } catch (NumberFormatException e) {
+        System.out.println("Incorrect number parameter in " + name);
     }
     return null;
-
     }
 }

@@ -4,7 +4,7 @@ import entity.Aircraft;
 import validator.Validator;
 
 public class PassengerAirplane extends Aircraft {
-    Validator validator = new Validator();
+    private Validator validator = new Validator();
     private static final long serialVersionUID = 1L;
 
     private int amountPassengers;
@@ -22,7 +22,7 @@ public class PassengerAirplane extends Aircraft {
         return amountPassengers;
     }
     public boolean setAmountPassengers(int amountPassengers) {
-        if(validator.isNegative(amountPassengers)) {
+        if (validator.isNegative(amountPassengers)) {
             return false;
         }
         this.amountPassengers = amountPassengers;
@@ -34,7 +34,7 @@ public class PassengerAirplane extends Aircraft {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         PassengerAirplane that = (PassengerAirplane) o;
-        return amountPassengers == that.amountPassengers ;
+        return amountPassengers == that.amountPassengers;
     }
 
     @Override
@@ -47,8 +47,8 @@ public class PassengerAirplane extends Aircraft {
 
     @Override
     public String toString() {
-        return super.toString() +
-                ", amountPassengers= " + amountPassengers +
-                '}' + System.lineSeparator();
+        return super.toString()
+                    + ", amountPassengers= " + amountPassengers
+                    + '}' + System.lineSeparator();
     }
 }

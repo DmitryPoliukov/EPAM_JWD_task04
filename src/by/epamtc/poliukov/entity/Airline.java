@@ -170,8 +170,11 @@ public class Airline implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName()
-                + "[allAircrafts=" + allAircrafts
-                + ']';
+        StringBuilder builder = new StringBuilder();
+        builder.append(getClass().getSimpleName());
+        builder.append(" [allAircrafts==");
+        builder.append(allAircrafts);
+        builder.append("]");
+        return builder.toString();
     }
 }

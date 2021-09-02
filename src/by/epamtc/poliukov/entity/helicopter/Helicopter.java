@@ -51,8 +51,11 @@ public class Helicopter extends Aircraft implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString()
-                    + ", amountPassengers= " + amountPassengers
-                    + '}' + System.lineSeparator();
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append(", amountPassengers= ");
+        builder.append(amountPassengers);
+        builder.append("]");
+        builder.append(System.lineSeparator());
+        return builder.toString();
     }
 }

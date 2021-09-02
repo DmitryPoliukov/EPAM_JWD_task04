@@ -49,8 +49,11 @@ public class CargoAirplane extends Aircraft implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString()
-                    + ", cargoCompartmentVolume= " + cargoCompartmentVolume
-                    + '}' + System.lineSeparator();
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append(", cargoCompartmentVolume= ");
+        builder.append(cargoCompartmentVolume);
+        builder.append("]");
+        builder.append(System.lineSeparator());
+        return builder.toString();
     }
 }

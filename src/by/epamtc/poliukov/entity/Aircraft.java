@@ -150,13 +150,22 @@ public class Aircraft implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "["
-                + "category= '" + category + '\''
-                + ", name= '" + name + '\''
-                + ", maximumFlightRange= " + maximumFlightRange
-                + ", cruisingSpeed= " + cruisingSpeed
-                + ", liftingCapacity= " + liftingCapacity
-                + ", fuelConsumption= " + fuelConsumption;
+        StringBuilder builder = new StringBuilder();
+        builder.append(getClass().getSimpleName());
+        builder.append(" [category= '");
+        builder.append(category);
+        builder.append(", name= '");
+        builder.append(name);
+        builder.append(", maximumFlightRange= ");
+        builder.append(maximumFlightRange);
+        builder.append(", cruisingSpeed= ");
+        builder.append(cruisingSpeed);
+        builder.append(", liftingCapacity= ");
+        builder.append(liftingCapacity);
+        builder.append(", fuelConsumption= ");
+        builder.append(fuelConsumption);
+        builder.append("]");
+        return builder.toString();
     }
 
 }
